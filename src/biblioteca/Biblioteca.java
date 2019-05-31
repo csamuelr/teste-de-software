@@ -5,41 +5,48 @@ import java.util.Iterator;
 
 public class Biblioteca {
 	
+	public static ArrayList<Aluno> alunos;
+	public static ArrayList<Obra> obras;	
+	
 	public static void main(String args[]) {
 		
-		Aluno aluno = new Aluno("Maria Costa", "101022", 0, -1, -1);	
-		Obra obra 		      = new Obra();
-		Emprestimo emprestimo = new Emprestimo();
-			
-		setObras();
 		
+	}	
+	
+	
+	public static ArrayList<Aluno> listaAlunos() {
+//		String nome, String matricula, int status, int empL, int empO
+		Aluno a1 = new Aluno("José Alves", "10101010", 1, 0, 5);
+		Aluno a2 = new Aluno("José Alves", "10101010", 0, 0, 5);
+		
+		Aluno a3 = new Aluno("Maria", "2012246", 1, 0, 5);
+		
+		
+		alunos = new ArrayList<Aluno>();
+		
+		alunos.add(a1);
+		alunos.add(a2);
+		
+//		Iterator i = alunos.iterator();
+////		
+//		while(i.hasNext()) {
+//			Aluno aluno = (Aluno) i.next();
+//			System.out.println(aluno.nome);
+//		}
+//		
+		return alunos;
 	}
 	
-	
-	public static void setObras() {
+	public static ArrayList<Obra> listaObras() {
 		
-		Obra ob1 = new Obra("Baião de Dois", 1);
-		Obra ob2 = new Obra("O Caçador de Pipas", 1);
-		Obra ob3 = new Obra("O Código da Vince", 1);
-		Obra ob4 = new Obra("Micro", 1);
-		Obra ob5 = new Obra("H2O51", 2);
-		Obra ob6 = new Obra("Alguma Coisa Aleatória", 2);		
+		Obra ob1 = new Obra("Banco de Dados", "Livro");
+		Obra ob2 = new Obra("Nárnia", "DVD");
 		
 		ArrayList<Obra> obras = new ArrayList<Obra>();
 		
 		obras.add(ob1);
-		obras.add(ob2);
-		obras.add(ob3);
-		obras.add(ob4);
-		obras.add(ob5);
-		obras.add(ob6);	
+		obras.add(ob2);		
 		
-		Iterator i = obras.iterator();
-		
-		while(i.hasNext()) {
-			Obra obra = (Obra) i.next();
-			System.out.println("Obra: " + obra.nome + "\nCategoria: " + obra.categoria + "\n\n");
-		}
-			
+		return obras;
 	}
 }

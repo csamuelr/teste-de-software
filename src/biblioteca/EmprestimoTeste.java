@@ -2,17 +2,23 @@ package biblioteca;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class EmprestimoTeste {
-	
 	Emprestimo emprestimo;
+	static ArrayList<Aluno> aluno;
+	static ArrayList<Obra> obra;
+	
 	
 	@Before
 	public void setUp() throws Exception {
 		emprestimo = new Emprestimo();
+		aluno = Biblioteca.listaAlunos();
+		obra = Biblioteca.listaObras();
 	}	
 
 	@After
@@ -20,64 +26,100 @@ public class EmprestimoTeste {
 		emprestimo = null;
 	}
 	
+	
+	/*
+	 *  Esse é para dar certo | Cor verde
+	 */
+	
 	@Test
 	public void testeCaso1Emprestimo() {
 		
-//		String obra;
-//		String aluno;
-//		Integer diasLivro = 0;
-//		Integer diasOutros = 0;
-//		Integer contRenovação = 0;
-//		boolean status;
-		
-		emprestimo.setObra("Banco de Dados");
+		emprestimo.setObra(obra.get(0));
 		emprestimo.setDiasLivro(14);
-		emprestimo.setAluno("José Alves");
+		
+		emprestimo.setAluno(aluno.get(0));
 		emprestimo.setContRenovação(0);
 		
-		assertEquals(emprestimo.getObra(), "Banco de Dados");
+		assertEquals(emprestimo.getObra().nome, "Banco de Dados");
 		assertTrue(emprestimo.getDiasLivro() == 14);
-		assertEquals(emprestimo.getAluno(), "José Alves");
-		assertEquals(emprestimo.status, true);
+		assertEquals(emprestimo.getAluno().nome, "José Alves");
+		assertTrue(emprestimo.verificador);
 	}
+	
+	
+	
+	/*
+	 *  Esse é para dar errado | Cor vermelha
+	 */
 	
 	@Test
 	public void testeCaso2Emprestimo() {
-		emprestimo.setObra("Folheto Casas");
-		emprestimo.setDiasOutros(14);
-		emprestimo.setAluno("Francisca Joana");
-		emprestimo.setContRenovação(1);
 		
-		assertEquals(emprestimo.getObra(), "Folheto Casas");
-		assertTrue(emprestimo.getDiasOutros() == 5);
-		assertEquals(emprestimo.getAluno(), "Francisca Joana");
-		assertEquals(emprestimo.status, true);
+		emprestimo.setObra(obra.get(0));
+		emprestimo.setDiasLivro(14);
+
+		emprestimo.setAluno(aluno.get(1));
+		emprestimo.setContRenovação(0);
+		
+		assertEquals(emprestimo.getObra().nome, "Banco de Dados");
+		assertTrue(emprestimo.getDiasLivro() == 14);
+		assertEquals(emprestimo.getAluno().nome, "José Alves");
+		assertTrue(emprestimo.verificador);
 	}
+	
+	
+	/*
+	 *  Esse é para dar errado | Cor vermrelha
+	 */
 	
 	@Test
 	public void testeCaso3Emprestimo() {
-		emprestimo.setObra("Dom Casmurro");
-		emprestimo.setDiasLivro(3);
-		emprestimo.setAluno("Joana");
-		emprestimo.setContRenovação(4);
+		emprestimo.setObra(obra.get(1));
+		emprestimo.setDiasOutros(14);
+		emprestimo.setAluno(aluno.get(2));
+		emprestimo.setContRenovação(1);
 		
-		assertEquals(emprestimo.getObra(), "Dom Casmurro");
-		assertTrue(emprestimo.getDiasLivro() == 14);
-		assertEquals(emprestimo.getAluno(), "Joana");
-		assertEquals(emprestimo.status, true);
+		assertEquals(emprestimo.getObra().nome, "Nárnia");
+		assertTrue(emprestimo.getDiasOutros() == 14);
+		assertEquals(emprestimo.getAluno().nome, "Maria");
+		assertTrue(emprestimo.verificador);
 	}
+	
+	
+	
+	/*
+	 *  Esse é para dar errado | Cor vermelha
+	 */
 	
 	@Test
 	public void testeCaso4Emprestimo() {
-		emprestimo.setObra("Folheto Casas");
-		emprestimo.setDiasOutros(-3);
-		emprestimo.setAluno("Lucas");
-		emprestimo.setContRenovação(1);
+		emprestimo.setObra(obra.get(1));
+		emprestimo.setDiasOutros(3);
+		emprestimo.setAluno(aluno.get(2));
+		emprestimo.setContRenovação(4);
 		
-		assertEquals(emprestimo.getObra(), "Folheto Casas");
-		assertTrue(emprestimo.getDiasOutros() == 5);
-		assertEquals(emprestimo.getAluno(), "Lucas");
-		assertEquals(emprestimo.status, true);
+		assertEquals(emprestimo.getObra().nome, "Nárnia");
+		assertTrue(emprestimo.getDiasOutros() == 3);
+		assertEquals(emprestimo.getAluno().nome, "Maria");
+		assertTrue(emprestimo.verificador);
+	}
+
+	
+	/*
+	 *  Esse é para dar errado | Cor verde
+	 */
+	
+	@Test
+	public void testeCaso5Emprestimo() {
+		emprestimo.setObra(obra.get(0));
+		emprestimo.setDiasLivro(14);
+		emprestimo.setAluno(aluno.get(0));
+		emprestimo.setContRenovação(4);
+		
+		assertEquals(emprestimo.getObra().nome, "Banco de Dados");
+		assertTrue(emprestimo.getDiasLivro() == 14);
+		assertEquals(emprestimo.getAluno().nome, "José Alves");
+		assertFalse(emprestimo.verificador);
 	}
 	
 	

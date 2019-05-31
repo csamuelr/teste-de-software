@@ -19,6 +19,7 @@ public class Obra {
 	public String getCategoria() {
 		return categoria;
 	}
+	
 	public void setCategoria(int categoria) {
 		
 		if (categoria == 1)			

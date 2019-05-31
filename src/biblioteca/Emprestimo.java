@@ -1,14 +1,14 @@
 package biblioteca;
 
 public class Emprestimo {
-	String obra;
-	String aluno;
+	Obra  obra;
+	Aluno  aluno;
 	Integer diasLivro = 0;
 	Integer diasOutros = 0;
 	Integer contRenovação = 0;
-	boolean status;
+	boolean verificador;
 	
-	public Emprestimo(){
+	public Emprestimo(){ 
 		
 	}
 
@@ -19,26 +19,31 @@ public class Emprestimo {
 	public void setContRenovação(Integer contRenovação) {
 		if (contRenovação <= 3) {
 			this.contRenovação = contRenovação;
-			this.status = true;
+			this.verificador = true;
 		}
 		else
-			this.status = false;			
+			this.verificador = false;			
 	}
 
-	public String getObra() {
+	public Obra getObra() {
 		return obra;
 	}
 
-	public void setObra(String obra) {
+	public void setObra(Obra obra) {
 		this.obra = obra;
 	}
 	
-	public String getAluno() {
+	public Aluno getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(String aluno) {
-		this.aluno = aluno;
+	public void setAluno(Aluno aluno) {
+		if(aluno.status == 1) {
+			this.aluno = aluno;
+		}
+		else {
+			this.aluno = null;
+		}
 	}
 
 	public Integer getDiasLivro() {
@@ -46,7 +51,7 @@ public class Emprestimo {
 	}
 
 	public void setDiasLivro(Integer renovacaoLivro) {
-		if (renovacaoLivro == 14)
+		if (this.obra.categoria == "Livro" && renovacaoLivro == 14 )
 			this.diasLivro = renovacaoLivro;
 		else
 			this.diasLivro = null;
@@ -57,7 +62,7 @@ public class Emprestimo {
 	}
 
 	public void setDiasOutros(Integer renovacaoOutros) {
-		if (renovacaoOutros == 5)
+		if (this.obra.categoria != "Livro" && renovacaoOutros == 5)
 			this.diasOutros = renovacaoOutros;
 		else
 			this.diasOutros = null;

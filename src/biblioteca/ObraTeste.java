@@ -31,7 +31,7 @@ public class ObraTeste {
 	@Test
 	public void testeCaso2Obra() {
 		obra.setNome("Folheto Casas");
-		obra.setCategoria(3);		
+		obra.setCategoria(8);		
 		assertEquals(obra.getNome(), "Folheto Casas");
 		assertFalse(obra.getCategoria() == null);
 	}
@@ -47,10 +47,25 @@ public class ObraTeste {
 	@Test
 	public void testeCaso4Obra() {
 		obra.setNome("PMBOOK");
-		obra.setCategoria71);		
+		obra.setCategoria(0);		
 		assertEquals(obra.getNome(), "PMBOOK");
 		assertFalse(obra.getCategoria() == null);
 	}
+	
+	/*
+	 *  Esse é para dar errado | Cor verde
+	 */
+	
+	@Test
+	public void testeCaso5Obra() {
+		obra.setNome("PMBOOK");
+		obra.setCategoria(7);		
+		assertEquals(obra.getNome(), "PMBOOK");
+		assertTrue(obra.getCategoria() == null);
+	}
+	
+	
+	
 	
 	
 }
